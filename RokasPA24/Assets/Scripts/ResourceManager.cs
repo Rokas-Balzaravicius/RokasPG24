@@ -6,7 +6,7 @@ public class ResourceManager : MonoBehaviour
 {
 
     public Transform treeCloneTemplate;
-    int NUMBER_OF_TREES = 100;
+    int NUMBER_OF_TREES = 50;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +18,7 @@ public class ResourceManager : MonoBehaviour
 
     private Vector3 getTreeSpawnLocation() 
     {
-        return new Vector3(UnityEngine.Random.Range(-100f, 100f), 0, UnityEngine.Random.Range(-100f, 100f));
+        return new Vector3(UnityEngine.Random.Range(-100f, 100f), 0, UnityEngine.Random.Range(-50f, 50f));
     }
 
     // Update is called once per frame

@@ -11,8 +11,6 @@ public class MouseLookAround : MonoBehaviour
 
     public Transform player;
 
-    private Vector3 offset;
-
     private void Start()
     {
        
@@ -24,8 +22,7 @@ public class MouseLookAround : MonoBehaviour
         rotationY += Input.GetAxis("Mouse X") * sensitivity;
         rotationX += Input.GetAxis("Mouse Y") * sensitivity;
         transform.localEulerAngles = new Vector3(rotationX, rotationY, 0);
-        offset = Quaternion.AngleAxis(Input.GetAxis("Mouse X") * sensitivity, Vector3.up) * offset;
-        transform.position = player.position + offset;
+        transform.position = player.position;
         transform.LookAt(player.position);
 
     }
