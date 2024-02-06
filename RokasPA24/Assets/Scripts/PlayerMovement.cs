@@ -8,7 +8,7 @@ public class PlayerMovement : MonoBehaviour
     float walkingspeed = 3f;
     float runningspeed = 5f;
     Animator PlayerAnimator;
-
+    
     float lookingspeed = 2f;
 
    
@@ -28,7 +28,14 @@ public class PlayerMovement : MonoBehaviour
 
         PlayerAnimator.SetBool("isWalking", false);
         PlayerAnimator.SetBool("isInspect", false);
+        PlayerAnimator.SetBool("isReload", false);
+        PlayerAnimator.SetBool("isFire", false);
+        PlayerAnimator.SetBool("isAim", false);
 
+
+
+
+       
         if (Input.GetKey(KeyCode.W))
         {
             transform.position += walkingspeed * transform.forward * Time.deltaTime;
@@ -84,6 +91,39 @@ public class PlayerMovement : MonoBehaviour
             PlayerAnimator.SetBool("isInspect", true);
         }
 
+        if(Input.GetKey (KeyCode.R)) 
+        {
+            PlayerAnimator.SetBool("isReload", true);
+            
+
+        }
+
+        if (Input.GetKeyDown(KeyCode.Mouse0))
+        {
+            PlayerAnimator.SetBool("isFire", true);
+            Ray gunshot = new Ray(transform.position, transform.forward);
+            Debug.DrawRay(gunshot.origin, gunshot.direction * 50, Color.red, 5);
+            if (Physics.Raycast(gunshot,50))
+                print("I hit something");
+
+
+        }
+
+        if( Input.GetKey(KeyCode.Mouse1))
+        {
+            PlayerAnimator.SetBool("isAim", true);
+        }
+
+       /* if (Input.GetKey(KeyCode.LeftControl)) 
+        {
+            transform.position = Vector3.down / 2;
+        }
+        else
+        {
+            transform.position = Vector3.down * 2;
+        }*/
+
+        
         
 
         
