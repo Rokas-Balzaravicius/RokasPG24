@@ -28,6 +28,7 @@ public class PlayerMovement : MonoBehaviour
 
         PlayerAnimator.SetBool("isWalking", false);
         PlayerAnimator.SetBool("isInspect", false);
+        PlayerAnimator.SetBool("isAiming", false);
 
         if (Input.GetKey(KeyCode.W))
         {
@@ -82,6 +83,11 @@ public class PlayerMovement : MonoBehaviour
         if(Input.GetKey(KeyCode.F)) 
         {
             PlayerAnimator.SetBool("isInspect", true);
+        }
+
+        if(Input.GetKey(KeyCode.Q))
+        {
+            PlayerAnimator.SetBool("isAiming", true);
         }
 
         
