@@ -28,10 +28,10 @@ public class PlayerMovement : MonoBehaviour
 
         PlayerAnimator.SetBool("isWalking", false);
         PlayerAnimator.SetBool("isInspect", false);
+
         PlayerAnimator.SetBool("isReload", false);
         PlayerAnimator.SetBool("isFire", false);
         PlayerAnimator.SetBool("isAim", false);
-
 
 
 
@@ -91,6 +91,7 @@ public class PlayerMovement : MonoBehaviour
             PlayerAnimator.SetBool("isInspect", true);
         }
 
+
         if(Input.GetKey (KeyCode.R)) 
         {
             PlayerAnimator.SetBool("isReload", true);
@@ -123,7 +124,6 @@ public class PlayerMovement : MonoBehaviour
             transform.position = Vector3.down * 2;
         }*/
 
-        
         
 
         
