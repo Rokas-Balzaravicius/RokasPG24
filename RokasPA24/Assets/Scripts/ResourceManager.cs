@@ -6,7 +6,7 @@ public class ResourceManager : MonoBehaviour
 {
 
     public Transform treeCloneTemplate;
-    int NUMBER_OF_TREES = 50;
+    int NUMBER_OF_TREES = 1000;
     // Start is called before the first frame update
     void Start()
     {
