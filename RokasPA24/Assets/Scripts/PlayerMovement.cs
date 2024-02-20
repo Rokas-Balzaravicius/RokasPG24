@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -18,6 +19,10 @@ public class PlayerMovement : MonoBehaviour
     private float orignalHeight;
     private float originalMoveSpeed;
 
+    internal enum characterHeight { upright, crouching }
+    internal characterHeight currentlyIAm = characterHeight.upright;
+    private float crouchingHeight =0.5f;
+    private float uprightHeight = 1.0f;
 
     void Start()
     {
@@ -34,8 +39,6 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         PlayerAnimator.SetBool("isWalking", false);
         PlayerAnimator.SetBool("isInspect", false);
 
@@ -44,42 +47,105 @@ public class PlayerMovement : MonoBehaviour
         PlayerAnimator.SetBool("isAim", false);
 
 
+        if (Input.GetKey(KeyCode.LeftControl))
+            currentlyIAm = characterHeight.crouching;
+        else
+            currentlyIAm = characterHeight.upright;
 
 
-        if (Input.GetKey(KeyCode.W))
+
+        switch (currentlyIAm)
         {
-            transform.position += walkingspeed * transform.forward * Time.deltaTime;
-            PlayerAnimator.SetBool("isWalking", true);
+           
+            case characterHeight.upright:
 
+
+
+                if (Input.GetKey(KeyCode.W))
+                {
+                    transform.position += walkingspeed * transform.forward * Time.deltaTime;
+                    PlayerAnimator.SetBool("isWalking", true);
+
+                }
+
+
+
+
+                if (Input.GetKey(KeyCode.S))
+                {
+                    transform.position -= walkingspeed * transform.forward * Time.deltaTime;
+                    PlayerAnimator.SetBool("isWalking", true);
+
+                }
+
+
+                if (Input.GetKey(KeyCode.D))
+                {
+                    transform.position += walkingspeed * transform.right * Time.deltaTime;
+                    PlayerAnimator.SetBool("isWalking", true);
+
+
+                }
+
+
+
+                if (Input.GetKey(KeyCode.A))
+                {
+                    transform.position -= walkingspeed * transform.right * Time.deltaTime;
+                    PlayerAnimator.SetBool("isWalking", true);
+
+                }
+
+                setUprightHeight();
+                break;
+
+            case characterHeight.crouching:
+
+
+                if (Input.GetKey(KeyCode.W))
+                {
+                    transform.position += crouchspeed * transform.forward * Time.deltaTime;
+                    PlayerAnimator.SetBool("isWalking", true);
+
+                }
+
+
+
+
+                if (Input.GetKey(KeyCode.S))
+                {
+                    transform.position -= crouchspeed * transform.forward * Time.deltaTime;
+                    PlayerAnimator.SetBool("isWalking", true);
+
+                }
+
+
+                if (Input.GetKey(KeyCode.D))
+                {
+                    transform.position += crouchspeed * transform.right * Time.deltaTime;
+                    PlayerAnimator.SetBool("isWalking", true);
+
+
+                }
+
+
+
+                if (Input.GetKey(KeyCode.A))
+                {
+                    transform.position -= crouchspeed * transform.right * Time.deltaTime;
+                    PlayerAnimator.SetBool("isWalking", true);
+
+                }
+
+                setCrouchingHeight();
+
+                break;
         }
 
 
+   
 
 
-        if (Input.GetKey(KeyCode.S))
-        {
-            transform.position -= walkingspeed * transform.forward * Time.deltaTime;
-            PlayerAnimator.SetBool("isWalking", true);
-
-        }
-
-
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.position += walkingspeed * transform.right * Time.deltaTime;
-            PlayerAnimator.SetBool("isWalking", true);
-
-
-        }
-
-
-
-        if (Input.GetKey(KeyCode.A))
-        {
-            transform.position -= walkingspeed * transform.right * Time.deltaTime;
-            PlayerAnimator.SetBool("isWalking", true);
-
-        }
 
 
 
@@ -125,14 +191,19 @@ public class PlayerMovement : MonoBehaviour
             PlayerAnimator.SetBool("isAim", true);
         }
 
-       /* if(Input.GetKeyDown(KeyCode.LeftControl))
-        {
-            transform.position = Vector3.down * 1f;
-            transform.position += crouchspeed*T
-            
-        }*/
+      
 
 
 
+    }
+
+    private void setCrouchingHeight()
+    {
+      transform.position = new Vector3(transform.position.x, crouchingHeight, transform.position.z);
+    }
+
+    private void setUprightHeight()
+    {
+        transform.position = new Vector3(transform.position.x, uprightHeight, transform.position.z);
     }
 }
