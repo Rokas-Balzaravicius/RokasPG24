@@ -7,5 +7,11 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: OC_LPSP_WEP_AR_01
-  m_Controller: {fileID: 9100000, guid: e021bf02d4eafc4479bdd25737320029, type: 2}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: 75a8bcf038594ab4a98e057e99fa9fbe, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 402e385809e25da41bd06d2dc022c5fb, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 402e385809e25da41bd06d2dc022c5fb, type: 3}
+  - m_OriginalClip: {fileID: 7400010, guid: bfda376b0f658a748870ea8f7c2c7c03, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 144e9e27c691b1e4898d0e3c20d2aa9d, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: bfda376b0f658a748870ea8f7c2c7c03, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: bfda376b0f658a748870ea8f7c2c7c03, type: 3}
