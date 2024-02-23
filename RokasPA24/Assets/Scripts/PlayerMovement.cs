@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using UnityEditor;
 using UnityEditor.Timeline;
 using UnityEngine;
 
@@ -23,6 +24,8 @@ public class PlayerMovement : MonoBehaviour
     internal characterHeight currentlyIAm = characterHeight.upright;
     private float crouchingHeight =0.5f;
     private float uprightHeight = 1.0f;
+
+    private int health = 100;
 
     void Start()
     {
@@ -181,6 +184,10 @@ public class PlayerMovement : MonoBehaviour
             Ray gunshot = new Ray(transform.position, transform.forward);
             Debug.DrawRay(gunshot.origin, gunshot.direction * 50, Color.red, 5);
             if (Physics.Raycast(gunshot, 50))
+                if(Physics.Raycast(gunshot, out RaycastHit hit))
+                {
+                    hit.collider.gameObject.GetComponent<ZombieHealth>()?.takeDamage(15);
+                }
                 print("I hit something");
 
 
@@ -206,4 +213,31 @@ public class PlayerMovement : MonoBehaviour
     {
         transform.position = new Vector3(transform.position.x, uprightHeight, transform.position.z);
     }
+
+   public void takeDamage(int damage)
+    {
+        health -= damage;
+
+        if (health < 0) { Destroy(gameObject); }
+        print("My Health is now " + health.ToString());
+    }
+
+
+
+
+
+
+
+
+
+
+    public void ExitGame() 
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+    }
+
+
 }

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class AIController : MonoBehaviour
 {
+   
     Animator ZombieAnimator;
     PlayerMovement lockOnTo;
     float maxMeleeDistance = 2f;
@@ -98,7 +99,9 @@ public class AIController : MonoBehaviour
         switch (isCurrently)
         {
             case NPCState.Chase:
-                transform.LookAt(lockOnTo.transform.position);
+                Vector3 target = lockOnTo.transform.position;
+                target.y = transform.position.y;
+                transform.LookAt(target);
                 transform.position += chaseSpeed * transform.forward * Time.deltaTime;
                 ZombieAnimator.SetBool("isRunningZombie",true);
                 break;
@@ -109,7 +112,7 @@ public class AIController : MonoBehaviour
                 if (timer < 0)
                 {
                     print("Zombie Attack");
-                   // lockOnTo.takeDamage(10);
+                    lockOnTo.takeDamage(10);
                     timer = AttackCoolDown;
                 }
 

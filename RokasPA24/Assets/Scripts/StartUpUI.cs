@@ -21,6 +21,9 @@ public class StartUpUI : MonoBehaviour
     {
         Application.Quit();
         print("Exiting game");
+
+
+        
     }
 
     public void StartGame()
@@ -29,6 +32,7 @@ public class StartUpUI : MonoBehaviour
         SceneManager.LoadScene(1);
         print("Playing game");
     }
+
 
 
 }
