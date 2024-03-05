@@ -8,18 +8,13 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    float walkingspeed = 3f;
-    float runningspeed = 5f;
-    float crouchspeed = 2f;
+    private float walkingspeed = 3f;
+    private float runningspeed = 5f;
+    private float crouchspeed = 2f;
     Animator PlayerAnimator;
 
 
-    float lookingspeed = 2f;
-    private bool isCrouching;
-    private Vector3 orignalCenter;
-    private float orignalHeight;
-    private float originalMoveSpeed;
-
+    
     internal enum characterHeight { upright, crouching }
     internal characterHeight currentlyIAm = characterHeight.upright;
     private float crouchingHeight =0.5f;
@@ -30,10 +25,7 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         PlayerAnimator = GetComponentInChildren<Animator>();
-        transform.tag = "Player";
-        orignalCenter = transform.localPosition;
-        orignalHeight = transform.localScale.y;
-        originalMoveSpeed = walkingspeed;
+        
         
 
 
