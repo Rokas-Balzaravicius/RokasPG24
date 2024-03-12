@@ -15,17 +15,17 @@ public class PistolAnimator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Pistolanimator.SetBool("isReloadPistol", false);
-        Pistolanimator.SetBool("isFiringPistol", false);
+        Pistolanimator.SetBool("isReload", false);
+        Pistolanimator.SetBool("isFiring", false);
 
         if (Input.GetKey(KeyCode.R))
         {
-            Pistolanimator.SetBool("isReloadPistol", true);
+            Pistolanimator.SetBool("isReload", true);
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
-            Pistolanimator.SetBool("isFiringPistol", true);
+            Pistolanimator.SetBool("isFiring", true);
         }
     }
 }

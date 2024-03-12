@@ -6,6 +6,7 @@ using UnityEditor;
 using UnityEditor.Timeline;
 using UnityEngine;
 
+
 public class PlayerMovement : MonoBehaviour
 {
     private float walkingspeed = 3f;
@@ -13,7 +14,7 @@ public class PlayerMovement : MonoBehaviour
     private float crouchspeed = 2f;
     Animator PlayerAnimator;
 
-
+    RuntimeAnimatorController ARAnimator, PistolAnimator;
     
     internal enum characterHeight { upright, crouching }
     internal characterHeight currentlyIAm = characterHeight.upright;
@@ -25,8 +26,13 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         PlayerAnimator = GetComponentInChildren<Animator>();
-        
-        
+
+        ARAnimator =(RuntimeAnimatorController) Resources.Load("PLayerAnimator");
+
+        PistolAnimator = (RuntimeAnimatorController)Resources.Load("CharacterPistol");
+
+
+        PlayerAnimator.runtimeAnimatorController = ARAnimator;
 
 
     }
@@ -34,6 +40,23 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(Input.GetKeyDown("1"))
+        {
+            PlayerAnimator.runtimeAnimatorController = ARAnimator;
+        }
+
+        if(Input.GetKeyDown("2"))
+        {
+            PlayerAnimator.runtimeAnimatorController = PistolAnimator;
+        }
+
+
+
+
+
+
+
         PlayerAnimator.SetBool("isWalking", false);
         PlayerAnimator.SetBool("isInspect", false);
 

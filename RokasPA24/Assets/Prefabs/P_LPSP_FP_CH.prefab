@@ -1297,7 +1297,6 @@ GameObject:
   - component: {fileID: 3579691224583304625}
   - component: {fileID: 3491997520378024500}
   - component: {fileID: 7365771461525469379}
-  - component: {fileID: 7365771461525469378}
   - component: {fileID: 7365771461525469377}
   m_Layer: 10
   m_Name: P_LPSP_FP_CH
@@ -1459,18 +1458,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2be31b49d9d7b7a4a9f3b9f26f28e725, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &7365771461525469378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4617851002817599472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 90faf0216ac60fd40bd085933b80990f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &7365771461525469377
