@@ -6,20 +6,16 @@ using UnityEditor;
 using UnityEditor.Timeline;
 using UnityEngine;
 
+
 public class PlayerMovement : MonoBehaviour
 {
-    float walkingspeed = 3f;
-    float runningspeed = 5f;
-    float crouchspeed = 2f;
+    private float walkingspeed = 3f;
+    private float runningspeed = 5f;
+    private float crouchspeed = 2f;
     Animator PlayerAnimator;
 
-
-    float lookingspeed = 2f;
-    private bool isCrouching;
-    private Vector3 orignalCenter;
-    private float orignalHeight;
-    private float originalMoveSpeed;
-
+    RuntimeAnimatorController ARAnimator, PistolAnimator;
+    
     internal enum characterHeight { upright, crouching }
     internal characterHeight currentlyIAm = characterHeight.upright;
     private float crouchingHeight =0.5f;
@@ -30,11 +26,13 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         PlayerAnimator = GetComponentInChildren<Animator>();
-        transform.tag = "Player";
-        orignalCenter = transform.localPosition;
-        orignalHeight = transform.localScale.y;
-        originalMoveSpeed = walkingspeed;
-        
+
+        ARAnimator =(RuntimeAnimatorController) Resources.Load("PLayerAnimator");
+
+        PistolAnimator = (RuntimeAnimatorController)Resources.Load("CharacterPistol");
+
+
+        PlayerAnimator.runtimeAnimatorController = ARAnimator;
 
 
     }
@@ -42,6 +40,23 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if(Input.GetKeyDown("1"))
+        {
+            PlayerAnimator.runtimeAnimatorController = ARAnimator;
+        }
+
+        if(Input.GetKeyDown("2"))
+        {
+            PlayerAnimator.runtimeAnimatorController = PistolAnimator;
+        }
+
+
+
+
+
+
+
         PlayerAnimator.SetBool("isWalking", false);
         PlayerAnimator.SetBool("isInspect", false);
 
