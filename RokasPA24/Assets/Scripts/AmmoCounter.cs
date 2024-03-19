@@ -11,12 +11,15 @@ public class AmmoCounter : MonoBehaviour
     public bool isFiring;
     public Text ammoDisplay;
 
-    public float reloadDelay = 1.0f; 
+    public float reloadDelay = 1.0f;
+
+  
 
 
 
     void Start()
     {
+       
         ammo = maxAmmo; 
     }
 
@@ -33,10 +36,8 @@ public class AmmoCounter : MonoBehaviour
             isFiring = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.R)) 
-        {
-            StartCoroutine(ReloadWithDelay()); 
-        }
+
+       
     }
 
     IEnumerator ReloadWithDelay()
