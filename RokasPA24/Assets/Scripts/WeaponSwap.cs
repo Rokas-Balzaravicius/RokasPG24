@@ -34,11 +34,13 @@ public class WeaponSwap : MonoBehaviour
     {
         AR.SetActive(true);
         P_LPSP_WEP_Handgun_04.SetActive(false);
+        gameObject.SendMessage("updateAmmoScript");
     }
 
     void Equip2()
     {
         AR.SetActive(false);
         P_LPSP_WEP_Handgun_04.SetActive(true);
+        gameObject.SendMessage("updateAmmoScript");
     }
 }
