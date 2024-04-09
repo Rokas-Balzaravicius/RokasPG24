@@ -10,13 +10,7 @@ public class AmmoCounter : MonoBehaviour
     public int ammo;
     public bool isFiring;
     public Text ammoDisplay;
-
     public float reloadDelay = 1.0f;
-
-  
-
-
-
     void Start()
     {
        
@@ -26,18 +20,12 @@ public class AmmoCounter : MonoBehaviour
     void Update()
     {
         ammoDisplay.text = ammo.ToString();
-
-
-
         if (Input.GetKeyDown(KeyCode.Mouse0) && !isFiring && ammo > 0)
         {
             isFiring = true;
             ammo--;
             isFiring = false;
         }
-
-
-       
     }
 
     IEnumerator ReloadWithDelay()

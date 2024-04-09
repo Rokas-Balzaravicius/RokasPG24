@@ -272,7 +272,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    //This inheritance from the Health Script
+    //This is an Interface from the Health Script
    public void takeDamage(int damage)
     {
         health -= damage;
@@ -283,7 +283,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-
+    //This is an Inheritance from the AmmoCounter Script
     public void updateAmmoScript()
     {
         ammoCounter = GetComponentInChildren<AmmoCounter>();

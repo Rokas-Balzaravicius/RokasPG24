@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ public class ZombieHealth : MonoBehaviour
 {
     private int health = 100;
 
+    ResourceManager manager;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +25,13 @@ public class ZombieHealth : MonoBehaviour
         health -= damage;
         if (health < 0)
         {
+            manager.IvDied(this);
             Destroy(gameObject);
         }
+    }
+
+    internal void Iam(ResourceManager resourceManager)
+    {
+       manager = resourceManager;
     }
 }
