@@ -6,9 +6,6 @@ using UnityEngine;
 public class ResourceManager : MonoBehaviour
 {
 
-    public Transform treeCloneTemplate;
-    int NUMBER_OF_TREES = 100;
-
     public Transform ZombieClone;
     int NumberOfZombies = 10;
 
@@ -18,12 +15,6 @@ public class ResourceManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
-
-        for(int i = 0; i < NUMBER_OF_TREES; i++) 
-        {
-           Instantiate(treeCloneTemplate, getTreeSpawnLocation(), Quaternion.identity);
-        }
-
         for(int i = 0;i < NumberOfZombies; i++)
         {
 
@@ -37,26 +28,15 @@ public class ResourceManager : MonoBehaviour
         return new Vector3(UnityEngine.Random.Range(-100f, 100f), 0, UnityEngine.Random.Range(-100f, 100f));
     }
 
-    private Vector3 getTreeSpawnLocation() 
-    {
-        return new Vector3(UnityEngine.Random.Range(-100f, 100f), 0, UnityEngine.Random.Range(-50f, 50f));
-    }
-
     public void ZombieKilled()
     {
         zombieKilled++;
         Debug.Log("Zombies Killed: " + zombieKilled);
-        if (zombieKilled >= 2)
+        if (zombieKilled >= 10)
         {
             Debug.Log("Congratulations! You Win");
             Application.Quit();
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 
     internal void IvDied(ZombieHealth zombieHealth)

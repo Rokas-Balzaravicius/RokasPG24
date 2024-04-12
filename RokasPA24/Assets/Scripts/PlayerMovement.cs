@@ -29,6 +29,10 @@ public class PlayerMovement : MonoBehaviour
     bool canFireRaycast = true;
     public float reloadDelay = 1.0f;
 
+    public AudioSource walkingSound;
+    public AudioSource runningSound;
+    
+
     void Start()
     {
         PlayerAnimator = GetComponentInChildren<Animator>();
@@ -65,6 +69,9 @@ public class PlayerMovement : MonoBehaviour
 
         //Character Controlls 
 
+        walkingSound.Stop();
+        runningSound.Stop();
+       
 
         PlayerAnimator.SetBool("isWalking", false);
         PlayerAnimator.SetBool("isInspect", false);
@@ -92,6 +99,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     transform.position += walkingspeed * transform.forward * Time.deltaTime;
                     PlayerAnimator.SetBool("isWalking", true);
+                    walkingSound.Play();
 
                 }
 
@@ -102,6 +110,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     transform.position -= walkingspeed * transform.forward * Time.deltaTime;
                     PlayerAnimator.SetBool("isWalking", true);
+                    walkingSound.Play();
 
                 }
 
@@ -110,6 +119,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     transform.position += walkingspeed * transform.right * Time.deltaTime;
                     PlayerAnimator.SetBool("isWalking", true);
+                    walkingSound.Play();
 
 
                 }
@@ -120,6 +130,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     transform.position -= walkingspeed * transform.right * Time.deltaTime;
                     PlayerAnimator.SetBool("isWalking", true);
+                    walkingSound.Play();
 
                 }
 
@@ -133,6 +144,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     transform.position += crouchspeed * transform.forward * Time.deltaTime;
                     PlayerAnimator.SetBool("isWalking", true);
+                    walkingSound.Play();
 
                 }
 
@@ -143,6 +155,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     transform.position -= crouchspeed * transform.forward * Time.deltaTime;
                     PlayerAnimator.SetBool("isWalking", true);
+                    walkingSound.Play();
 
                 }
 
@@ -151,6 +164,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     transform.position += crouchspeed * transform.right * Time.deltaTime;
                     PlayerAnimator.SetBool("isWalking", true);
+                    walkingSound.Play();
 
 
                 }
@@ -161,7 +175,7 @@ public class PlayerMovement : MonoBehaviour
                 {
                     transform.position -= crouchspeed * transform.right * Time.deltaTime;
                     PlayerAnimator.SetBool("isWalking", true);
-
+                    walkingSound.Play();
                 }
 
                 setCrouchingHeight();
@@ -180,6 +194,7 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.position += runningspeed * transform.forward * Time.deltaTime;
             PlayerAnimator.SetBool("isRunning", true);
+            runningSound.Play();
 
         }
 
@@ -205,7 +220,7 @@ public class PlayerMovement : MonoBehaviour
         {
             PlayerAnimator.SetBool("isReload", true);
             StartCoroutine(ReloadWithDelay());
-
+          
 
         }
 
@@ -219,6 +234,7 @@ public class PlayerMovement : MonoBehaviour
         {
             PlayerAnimator.SetBool("isFire", true);
             FireRaycast();
+            
         }
 
         if (Input.GetKey(KeyCode.Mouse1))
@@ -299,6 +315,7 @@ public class PlayerMovement : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
+            Debug.Log("Quitting");
             Application.Quit();
         }
     }

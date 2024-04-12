@@ -6,6 +6,9 @@ public class PistolAnimator : MonoBehaviour
 {
 
     Animator Pistolanimator;
+
+    public AudioSource firingSound;
+    public AudioSource reloadingSound;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,14 +21,19 @@ public class PistolAnimator : MonoBehaviour
         Pistolanimator.SetBool("isReload", false);
         Pistolanimator.SetBool("isFiring", false);
 
+        firingSound.Stop();
+        reloadingSound.Stop();
+
         if (Input.GetKey(KeyCode.R))
         {
             Pistolanimator.SetBool("isReload", true);
+            reloadingSound.Play();
         }
 
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
             Pistolanimator.SetBool("isFiring", true);
+            firingSound.Play();
         }
     }
 }
