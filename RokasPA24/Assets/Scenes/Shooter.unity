@@ -431,6 +431,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ZombieClone: {fileID: 1339053451176576391, guid: 6d6a550e693578c4da097b554ff893c0,
     type: 3}
+  ZombieBoss: {fileID: 5092124600051120558, guid: a09e9d1e1b7deae4fb21acfafb1a3f59,
+    type: 3}
 --- !u!4 &2091115197
 Transform:
   m_ObjectHideFlags: 0

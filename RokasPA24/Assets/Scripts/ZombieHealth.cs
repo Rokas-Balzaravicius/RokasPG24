@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ZombieHealth : MonoBehaviour
+public class ZombieHealth : MonoBehaviour,HealthScript
 {
     private int health = 100;
 

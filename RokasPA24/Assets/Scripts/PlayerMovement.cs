@@ -8,7 +8,7 @@ using UnityEngine;
 using UnityEngine.Rendering.PostProcessing;
 
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour,HealthScript
 {
     private float walkingspeed = 3f;
     private float runningspeed = 5f;
@@ -288,7 +288,7 @@ public class PlayerMovement : MonoBehaviour
 
 
 
-    //This is an Interface from the Health Script
+   // This is an Interface from the Health Script
    public void takeDamage(int damage)
     {
         health -= damage;

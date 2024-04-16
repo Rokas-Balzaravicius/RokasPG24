@@ -8,9 +8,13 @@ public class ResourceManager : MonoBehaviour
 
     public Transform ZombieClone;
     int NumberOfZombies = 10;
+    public Transform ZombieBoss;
 
     private int zombieKilled = 0;
+    int zombiesKilledForBoss = 2;
     List<ZombieHealth> allZombies=new List<ZombieHealth>();
+
+    private bool bossSpawned = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,11 +36,21 @@ public class ResourceManager : MonoBehaviour
     {
         zombieKilled++;
         Debug.Log("Zombies Killed: " + zombieKilled);
-        if (zombieKilled >= 10)
+        if (!bossSpawned && zombieKilled >= zombiesKilledForBoss)
         {
-            Debug.Log("Congratulations! You Win");
-            Application.Quit();
+            Debug.Log("Boss Zombie Incoming");
+            Transform newZombieGO = Instantiate(ZombieBoss,getZombieLocation(),Quaternion.identity);
+            ZombieHealth newZombie = newZombieGO.GetComponent<ZombieHealth>();
+            allZombies.Add(newZombie);
+            newZombie.Iam(this);
+
+            bossSpawned = true;
         }
+    }
+
+    public void ZombieBossKilled()
+    {
+
     }
 
     internal void IvDied(ZombieHealth zombieHealth)
