@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class ZombieHealth : MonoBehaviour,HealthScript
 {
-    private int health = 100;
+   internal int health = 100;
 
     ResourceManager manager;
     // Start is called before the first frame update
