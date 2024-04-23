@@ -7,22 +7,22 @@ public class AIController : MonoBehaviour
    
     Animator ZombieAnimator;
     PlayerMovement lockOnTo;
-    float maxMeleeDistance = 2f;
+    internal float maxMeleeDistance = 2f;
     enum NPCState { Patrol, Chase, Attack }
     enum NPCTransitions { None, See_Target, Within_Melee_Range }
 
     NPCTransitions NPCWorldChange = NPCTransitions.None;
 
     NPCState isCurrently = NPCState.Patrol;
-    private float breakAwayDistance = 7;
-    private float chaseSpeed = 2f;
-    private float timer;
-    private float patrolChangeDirectionTime = 5;
-    private float patrolSpeed = 1f;
-    private float AttackCoolDown = 2;
+    internal float breakAwayDistance = 7f;
+    internal float chaseSpeed = 2f;
+    internal float timer;
+    internal float patrolChangeDirectionTime = 5f;
+    internal float patrolSpeed = 1f;
+    internal float AttackCoolDown = 2f;
 
     // Start is called before the first frame update
-    void Start()
+    internal void Start()
     {
         ZombieAnimator = GetComponent<Animator>();
     }
