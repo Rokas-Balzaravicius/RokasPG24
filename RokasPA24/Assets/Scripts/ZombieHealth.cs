@@ -7,6 +7,8 @@ public class ZombieHealth : MonoBehaviour,HealthScript
 {
    internal int health = 100;
 
+ 
+
     ResourceManager manager;
     // Start is called before the first frame update
     void Start()
@@ -22,12 +24,13 @@ public class ZombieHealth : MonoBehaviour,HealthScript
 
     public void takeDamage(int damage)
     {
-        health -= damage;
-        if (health < 0)
-        {
-            manager.IvDied(this);
-            Destroy(gameObject);
-        }
+            health -= damage;
+            if (health < 0)
+            {
+                manager.IvDied(this);
+                Destroy(gameObject);
+            }
+        
     }
 
     internal void Iam(ResourceManager resourceManager)

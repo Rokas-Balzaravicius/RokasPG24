@@ -5,10 +5,12 @@ using UnityEngine;
 public class BossController :AIController
 
 {
-
+  
     
     // Start is called before the first frame update
+#pragma warning disable CS0108 // Member hides inherited member; missing new keyword
     void Start()
+#pragma warning restore CS0108 // Member hides inherited member; missing new keyword
     {
         maxMeleeDistance = 3f;
         breakAwayDistance = 8f;
@@ -28,4 +30,8 @@ public class BossController :AIController
     {
         
     }
+
+    
+
+    
 }
